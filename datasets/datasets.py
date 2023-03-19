@@ -3,7 +3,8 @@ import os
 import torch
 
 
-DEFAULT_ROOT = './materials'
+#DEFAULT_ROOT = './materials'
+DEFAULT_ROOT = '/content/data'
 datasets = {}
 
 def register(name):
