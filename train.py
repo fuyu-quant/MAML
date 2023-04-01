@@ -52,6 +52,7 @@ def main(config):
     train_set, config['train']['n_episode'],
     collate_fn=datasets.collate_fn, num_workers=1, pin_memory=True)
 
+
   # meta-val
   eval_val = False
   if config.get('val'):
@@ -87,6 +88,11 @@ def main(config):
       config['optimizer'], model.parameters(), **config['optimizer_args'])
     start_epoch = 1
     max_va = 0.
+
+  # Tensorboardでの構造の描画用
+  dataiter = iter(train_loader)
+  images, labels = next(dataiter)
+  writer.add_graph(model, images)
 
   if args.efficient:
     model.go_efficient()
@@ -263,4 +269,7 @@ if __name__ == '__main__':
     config['_gpu'] = args.gpu
 
   utils.set_gpu(args.gpu)
+  dataiter = iter(trainloader)
+  images, labels = next(dataiter)
+  
   main(config)
