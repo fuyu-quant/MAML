@@ -269,7 +269,5 @@ if __name__ == '__main__':
     config['_gpu'] = args.gpu
 
   utils.set_gpu(args.gpu)
-  dataiter = iter(trainloader)
-  images, labels = next(dataiter)
   
   main(config)
