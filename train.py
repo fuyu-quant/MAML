@@ -90,9 +90,9 @@ def main(config):
     max_va = 0.
 
   # Tensorboardでの構造の描画用
-  dataiter = iter(train_loader)
-  images, labels = next(dataiter)
-  writer.add_graph(model, images)
+  #dataiter = iter(train_loader)
+  #images, labels = next(dataiter)
+  #writer.add_graph(model, images)
 
   if args.efficient:
     model.go_efficient()
